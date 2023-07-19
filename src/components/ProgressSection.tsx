@@ -23,8 +23,8 @@ export const ProgressSection = ({
 
   if (Number(TARGETS.SOFT_CAP) < Number(TARGETS.MAX_YEET)) {
     validCaps = true;
-    softCapReached = Number(yeetBalance) > Number(TARGETS.SOFT_CAP);
-    hardCapReached = Number(yeetBalance) > Number(TARGETS.MAX_YEET);
+    softCapReached = Number(yeetBalance) >= Number(TARGETS.SOFT_CAP);
+    hardCapReached = Number(yeetBalance) >= Number(TARGETS.MAX_YEET);
     const softCapPerc =
       (Number(TARGETS.SOFT_CAP) / Number(TARGETS.MAX_YEET)) * 100; // 100% of soft cap
     hardCapDisp =
