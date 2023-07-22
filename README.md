@@ -41,7 +41,7 @@ git clone https://github.com/HausDAO/dh-v3-vite-starter.git
 
 git remote remove origin
 
-cd dh-moloch-v3-vite-starter
+cd dh-v3-vite-starter
 
 yarn
 ```
