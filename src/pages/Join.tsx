@@ -255,6 +255,7 @@ export const Join = () => {
             ) : (
               <StakeEthSection
                 balance={balance}
+                minStake={minTribute}
                 handleStake={handleStake}
                 isLoading={isLoadingTx || isRefetching}
                 address={address}
