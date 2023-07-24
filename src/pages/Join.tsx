@@ -192,9 +192,7 @@ export const Join = () => {
       <SingleColumnLayout>
         <StakeBox>
           <H2>Loading</H2>
-          <ParMd className="space">
-            getting data from the yeet gods{" "}
-          </ParMd>
+          <ParMd className="space">getting data from the yeet gods </ParMd>
           <SpinnerBox>
             <Spinner size="12rem" />
           </SpinnerBox>
@@ -267,8 +265,10 @@ export const Join = () => {
           <WarningText>Connect Wallet First</WarningText>
         )}
       </StakeBox>
-      
-      {shamanData?.received && <MemberTable memberList={shamanData.received} />}
+
+      {shamanData?.received && shamanData.received.length > 0 && (
+        <MemberTable memberList={shamanData.received} />
+      )}
     </SingleColumnLayout>
   );
 };
