@@ -8,11 +8,13 @@ export const StakeEthSection = ({
   isLoading,
   handleStake,
   balance,
+  minStake,
   address,
   chainId,
 }: {
   isLoading: boolean;
   balance?: string | null;
+  minStake?: string | null;
   handleStake: (wholeAmt: string) => void;
   address: string | undefined;
   chainId: string | undefined;
@@ -33,7 +35,12 @@ export const StakeEthSection = ({
       Number(toBaseUnits(stkAmt, TARGETS.STAKE_TOKEN_DECIMALS))
     ) {
       setValMsg(`Insufficient ${TARGETS.STAKE_TOKEN_SYMBOL} balance`);
-    } else {
+    } else if (
+      Number(minStake) >
+      Number(toBaseUnits(stkAmt, TARGETS.STAKE_TOKEN_DECIMALS))
+    ) {
+      setValMsg(`Must yeet at least ${minStake} ${TARGETS.STAKE_TOKEN_SYMBOL}`);
+    } {
       setValMsg(null);
     }
   });
