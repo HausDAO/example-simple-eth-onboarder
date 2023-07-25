@@ -37,6 +37,8 @@ import { useERC20 } from "../hooks/useERC20";
 import { ProgressSection } from "../components/ProgressSection";
 import { useSafeETH } from "../hooks/useSafeETH";
 import { MemberTable } from "../components/MemberTable/MemberTable";
+import { HAUS_RPC } from "@daohaus/keychain-utils";
+
 
 const StakeBox = styled.div`
   max-width: 70rem;
@@ -79,6 +81,8 @@ const SpinnerBox = styled.div`
   justify-content: center;
   width: 100%;
 `;
+
+const HAUS_RPC_OV = {...HAUS_RPC,...{"0xa":`https://opt-mainnet.g.alchemy.com/v2/${import.meta.env.VITE_ALCHEMY_KEY}`}}
 export const Join = () => {
   const { address, provider, chainId } = useDHConnect();
   const { fireTransaction } = useTxBuilder();
@@ -92,6 +96,7 @@ export const Join = () => {
     chainId: TARGETS.CHAIN_ID,
     userAddress: address,
     provider: provider,
+    rpcs: HAUS_RPC_OV,
     fetchShape: {
       balanceOf: true,
     },
@@ -106,6 +111,7 @@ export const Join = () => {
     chainId: TARGETS.CHAIN_ID,
     userAddress: address,
     tokenAddress: TARGETS.LOOT_ADDRESS,
+    rpcs: HAUS_RPC_OV,
     fetchShape: {
       balanceOf: true,
     },
@@ -114,6 +120,7 @@ export const Join = () => {
   const { shamanData, isLoading: isShamanLoading } = useOnboarder({
     shamanAddress: TARGETS.SHAMAN_ADDRESS,
     chainId: TARGETS.CHAIN_ID,
+    rpcs: HAUS_RPC_OV,
     fetchShape: {
       expiry: true,
       minTribute: true,
@@ -129,6 +136,7 @@ export const Join = () => {
     refetch: refetchYeetBank,
   } = useSafeETH({
     chainId: TARGETS.CHAIN_ID,
+    rpcs: HAUS_RPC_OV,
     fetchShape: {
       balanceOf: true,
     },
